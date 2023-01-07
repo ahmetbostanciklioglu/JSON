@@ -40,9 +40,9 @@ class ViewController: UIViewController {
         let urlKey = "b8809c1e58fc1eb37467250b3f34742d"
         if  let url = URL(string: "https://api.openweathermap.org/data/2.5/weather?appid=\(urlKey)&q=" + urlOfCity!) {
             URLSession.shared.dataTask(with: url) { data, response, error in
-                if error == nil, let data = data {
+                if error == nil, let myData = data {
                     do {
-                        self.responseData = try JSONDecoder().decode(Response.self, from: data)
+                        self.responseData = try JSONDecoder().decode(Response.self, from: myData)
                         completed(nil)
                     } catch {
                         completed(error)
